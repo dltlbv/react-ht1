@@ -65,3 +65,26 @@ body {
     margin-top: 10px;
   }
   
+  .like-container {
+    margin-top: 15px;
+  }
+  
+  .like-button {
+    background: none;
+    border: none; 
+    font-size: 20px; 
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+    margin: 5px;
+  }
+  
+  .like-button:focus {
+    outline: none;
+  }
+
+  .time {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+  }
