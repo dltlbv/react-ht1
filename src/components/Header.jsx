@@ -1,10 +1,20 @@
-import logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
+import { Layout, Menu } from "antd";
 
-export default function Header() {
+const { Header } = Layout;
+
+export default function AppHeader() {
   return (
-    <header>
-      <img src={logo} alt="logo" className="logo" />
-      <h4>ВКОНТАКТЕ</h4>
-    </header>
+    <Header>
+      <div className="logo" />
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+        <Menu.Item key="1">
+          <Link to="/">Об авторах</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/news">Новости</Link>
+        </Menu.Item>
+      </Menu>
+    </Header>
   );
 }

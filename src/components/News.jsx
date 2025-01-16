@@ -1,32 +1,35 @@
+import { Link } from "react-router-dom";
+import { Card, Typography, Button } from "antd";
 import { useState } from "react";
 
-export default function News({ author, description, image, time }) {
+const { Title, Paragraph } = Typography;
+
+export default function News({ author, description, image, time, authorId }) {
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
 
   const handleLike = () => {
-    if (liked) {
-      setLikesCount(likesCount - 1);
-    } else {
-      setLikesCount(likesCount + 1);
-    }
     setLiked(!liked);
+    setLikesCount(liked ? likesCount - 1 : likesCount + 1);
   };
 
   return (
-    <li>
-      <p>
-        <strong>{author}</strong>
-      </p>
-      <p>{description}</p>
-      {image && <img src={image} alt="news" />}
-      <p className="time">{time}</p>
-      <div className="like-container">
-        <button onClick={handleLike} className="like-button">
-          {liked ? "💙" : "🤍"} {}
-        </button>
-        <span className="likes-count">{likesCount}</span> {}
+    <Card
+      hoverable
+      cover={<img alt="news" src={image} style={{ height: "200px", objectFit: "cover" }} />}
+      style={{ width: 300 }}
+    >
+      <Title level={4}>
+        <Link to={`/author/${authorId}`}>{author}</Link>
+      </Title>
+      <Paragraph>{description}</Paragraph>
+      <p>{time}</p>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Button type="link" onClick={handleLike}>
+          {liked ? "💙 Лайкнуто" : "🤍 Лайкнуть"}
+        </Button>
+        <span>{likesCount}</span>
       </div>
-    </li>
+    </Card>
   );
 }
