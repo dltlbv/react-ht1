@@ -16,7 +16,13 @@ export default function News({ author, description, image, time, authorId }) {
   return (
     <Card
       hoverable
-      cover={<img alt="news" src={image} style={{ height: "200px", objectFit: "cover" }} />}
+      cover={
+        <img
+          alt="news"
+          src={image}
+          style={{ height: "200px", objectFit: "cover" }}
+        />
+      }
       style={{ width: 300 }}
     >
       <Title level={4}>
@@ -24,9 +30,15 @@ export default function News({ author, description, image, time, authorId }) {
       </Title>
       <Paragraph>{description}</Paragraph>
       <p>{time}</p>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Button type="link" onClick={handleLike}>
-          {liked ? "💙 Лайкнуто" : "🤍 Лайкнуть"}
+          {liked ? "💙" : "🤍"}
         </Button>
         <span>{likesCount}</span>
       </div>
